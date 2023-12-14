@@ -13,4 +13,16 @@ public class MainImageScript : MonoBehaviour
             image_unknown.SetActive(false);
         }
     }
+
+    private int _spriteId;
+    public int spriteId
+    {
+        get { return _spriteId; }
+    }
+
+    public void ChangeSprite(int id, Sprite image)
+    {
+        _spriteId = id;
+        GetComponent<SpriteRenderer>().sprite = image; //Gets the sprite renderer component to change the sprite.
+    }
 }
