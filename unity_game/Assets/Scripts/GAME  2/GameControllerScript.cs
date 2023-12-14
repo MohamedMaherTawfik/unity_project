@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class GameControllerScript : MonoBehaviour
 {
@@ -60,4 +60,57 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    private MainImageScript firstOpen;
+    private MainImageScript secondOpen;
+
+    private int score = 0;
+    private int attempts = 0;
+
+    [SerializeField] private TextMesh scoreText;
+    [SerializeField] private TextMesh attemptsText;
+
+    public bool canOpen
+    {
+        get { return secondOpen == null; }
+    }
+
+    public void imageOpened(MainImageScript startObject)
+    {
+        if (firstOpen == null)
+        {
+            firstOpen = startObject;
+        }
+        else
+        {
+            secondOpen = startObject;
+            StartCoroutine(CheckGuessed());
+        }
+    }
+
+    private IEnumerator CheckGuessed()
+    {
+        if (firstOpen.spriteId == secondOpen.spriteId) // Compares the two objects
+        {
+            score++; // Add score
+            scoreText.text = "Score: " + score;
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f); // Start timer
+
+            firstOpen.Close();
+            secondOpen.Close();
+        }
+
+        attempts++;
+        attemptsText.text = "Attempts: " + attempts;
+
+        firstOpen = null;
+        secondOpen = null;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 }
