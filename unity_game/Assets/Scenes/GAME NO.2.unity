@@ -1013,7 +1013,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
+
 --- !u!61 &1507072750
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1059,8 +1059,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.92, y: 2.14}
   m_EdgeRadius: 0.18
-=======
->>>>>>> 794bba26524adf5b535b31e1eb27e310f1ce6ab6
+
+
 --- !u!114 &1507072751
 MonoBehaviour:
   m_ObjectHideFlags: 0
