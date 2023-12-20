@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
         {
             Clickables[i].Setletters(Charslist[i]);
         }
+        FindObjectOfType<RemainingCounter>().setremaining(Correct_Answers - _CorrectClicks);
     }
 
     private static char ChosseInvalidRandomLetter()
@@ -55,6 +56,7 @@ public class GameController : MonoBehaviour
     internal static void HandleCorrectLetterClick()
     {
         _CorrectClicks++;
+        FindObjectOfType<RemainingCounter>().setremaining(Correct_Answers - _CorrectClicks);
         if (_CorrectClicks >= Correct_Answers)
         {
             Letter++;
